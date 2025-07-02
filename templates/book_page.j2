@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Learning Trail Catalog</title>
+  <link rel="icon" href="/static/learning-trail-icon.png">
+  <link rel="stylesheet" href="/static/global.css">
+  <link rel="stylesheet" href="/static/book_page.css"> 
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+        <img src="/static/learning-trail-full.png" width="100" alt="Learning Trail Logo">
+      <a href="/" class="btn home">Home</a>
+      <form action="{{ url_for('search') }}" method="get" class="search-group">
+        <input type="text" name="q" class="search-input" placeholder="Search catalog…" autofocus>
+        <button type="submit" class="btn search-btn"> Search </button>
+      </form>
+    </div>
+  </header>
+  <div class="container">
+    <div class="book-info">
+      <h1 class="title">{{ title }}</h1>
+      <p class="details">
+        <span class="author"><b>{{ author }}</b></span><br>
+        <span class="location">Location: {{ location }}</span><br>
+        <span class="series">Series: {{ series }}</span><br>
+        <span class="series-number">Series Number: {{ series_number }}</span><br>
+        <span class="genre">Genre: {{ genre }}</span><br>
+        <span class="availability">{{ available }} out of {{ copies }} copies available</span>
+      </p>
+    </div>
+    <div class="actions">
+      <form action="/catalog/{{ title }}" method="POST">
+        <button name="action" value="borrow" class="btn checkout">Checkout</button>
+        <button name="action" value="return" class="btn return">Return</button>
+        <label for="borrower"> Name of borrower: </label>
+        <input type="text" name="borrower" placeholder="John Doe">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %} 
+            <ul> {% for message in messages %}
+              <p> {{ message }}</p> 
+              {% endfor %} 
+            </ul> 
+        {% endif %} {% endwith %}
+      </form>
+    </div>
+    <div class="checked-out-info">
+      <h2>Checked Out Copies</h2>
+      <p>Copies currently checked out to:</p>
+      <span class='borrowers'> {{ borrowers }} </span>
+    </div>
+  </div>
+</body>
+</html>

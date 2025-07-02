@@ -1,0 +1,59 @@
+
+.search-group {
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  width: 400px;
+  height: 50px;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+.search-btn {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: 1px solid var(--accent-color);
+  border-radius: 0 5px 5px 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  height: 50px;
+}
+.search-btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Register Button Style (can reuse .btn or define custom) */
+.btn.register {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn.register:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Center the main content */
+.homepage-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  gap: 2rem;
+}

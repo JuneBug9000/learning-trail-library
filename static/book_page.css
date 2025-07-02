@@ -1,0 +1,89 @@
+/* Form inputs inside .actions */
+.actions input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.actions label {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.container {
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  width: 90%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.book-info {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.book-info .title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.book-info .details span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.actions {
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.checked-out-info {
+  grid-column: 1 / -1; /* span full width */
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  border-top: 2px solid var(--accent-color);
+}
+
+.checked-out-info h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}

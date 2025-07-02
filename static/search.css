@@ -1,0 +1,52 @@
+/* search.css */
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.search-results {
+  list-style: none;
+  padding: 0;
+}
+
+.result-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.book-title:hover {
+  text-decoration: underline;
+}
+
+.book-details {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: var(--primary-color);
+}
+
+.author,
+.series {
+  margin-right: 0.5rem;
+}
