@@ -2,23 +2,10 @@ import database
 import os
 
 
-#if os.path.exists('library.db'):
-#    os.remove('library.db')
+if os.path.exists('library.db'):
+    os.remove('library.db')
 
 database.connect()
-'''
-df = pd.read_csv("Library Inventory - All.csv", usecols=["Title","Author","Series","Series_Number","Topic/Genre","Location","Coppies"])
-print(df.head())
-for row in df:
-    title = row[0]
-    print(title)
-    author = row[1]
-    print(author)
-    series = row[2]
-    series_number = row[3]
-    genre= row[4]    
-    #database.register_book(title,author,series,series_number,genre,location,copies)
-'''
 
 import csv
 
@@ -73,8 +60,8 @@ def bulk_register_from_csv(csv_path):
     else:
         print("All books registered successfully!")
 
-#bulk_register_from_csv("Library Inventory - All.csv")
-#print(database.print_db())
+bulk_register_from_csv("Library Inventory - All.csv")
+print(database.print_db())
 
 
 
