@@ -7,7 +7,7 @@
   padding: 0.5rem;
   border: 1px solid var(--primary-color);
   border-right: none;
-  border-radius: 5px 0 0 5px;
+  border-radius: 0;
   width: 400px;
   height: 50px;
 }
@@ -23,10 +23,21 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
-  height: 50px;
+  height: 68px;
 }
 .search-btn:hover {
   background-color: var(--btn-hover);
+}
+
+.search_crit {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: 1px solid var(--accent-color);
+  border-radius: 5px 0 0 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  height: 68px;
 }
 
 .nav-buttons {
@@ -34,7 +45,6 @@
   gap: 1rem;
 }
 
-/* Register Button Style (can reuse .btn or define custom) */
 .btn.register {
   background-color: var(--accent-color);
   color: white;
@@ -49,7 +59,6 @@
   background-color: var(--btn-hover);
 }
 
-/* Center the main content */
 .homepage-main {
   display: flex;
   flex-direction: column;
