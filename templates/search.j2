@@ -13,6 +13,12 @@
         <img src="/static/learning-trail-full.png" width="100" alt="Learning Trail Logo">
       <a href="/" class="btn home">Home</a>
       <form action="{{ url_for('search') }}" method="get" class="search-group">
+        <select name='search_crit' id='search_crit' class='search_crit'>
+          <option value='title'>Title</option>
+          <option value='author'>Author</option>
+          <option value='series'>Series</option>
+          <option value='genre'>Genre</option>
+        </select>
         <input type="text" name="q" class="search-input" placeholder="Search catalog…" autofocus>
         <button type="submit" class="btn search-btn"> Search </button>
     </form>

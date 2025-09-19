@@ -33,7 +33,8 @@ def bookPage_get(title):
 def bookPage_post(title):
     if request.method == 'POST':
         if database.get_book(title) is None:
-            abort(404, description="Book Not Found")
+            return(render_template('missingBookPage.j2'))
+            #abort(404, description="Book Not Found")
         fields=['action','borrower']
         for field in fields:
             if field not in request.form:
@@ -95,10 +96,13 @@ def registerPage_post():
 
 @app.route('/search', methods=['GET'])
 def search():
+    criteria = request.args.get('search_crit', 'title')
     query = request.args.get('q', '').strip()
     results = []
     if query:
-        results = database.search_title(query, limit=5)
+        search_method = getattr(database, f"search_{criteria}", database.search_title)
+        results = search_method(query, limit=5)
+        #results = database.search_author(query, limit=5)
     return render_template('search.j2', query=query, results=results)
 
 app.run(port=8080, debug=True)

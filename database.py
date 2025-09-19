@@ -193,14 +193,68 @@ def search_title(query, limit=5):
     titles = [r['title'] for r in rows]
     matches = fuzzy_search(query, titles)[:limit]
 
-    # Build a list of dicts:
     results = []
+    seen_titles=set()
     for title, score in matches:
-        row = next(r for r in rows if r['title'] == title)
-        results.append({
-            'title':  row['title'],
-            'author': row['author'],
-            'series': row['series'] or '',
-            'score':  score
-        })
+        matching_rows = [r for r in rows if r['title'] == title]
+        for row in matching_rows: 
+            if row['title'] not in seen_titles:
+                results.append({
+                    'title':  row['title'],
+                    'author': row['author'],
+                    'series': row['series'] or '',
+                    'score':  score
+                })
+            seen_titles.add(row['title'])
+    return results
+
+def search_author(query, limit=5):
+    conn = sqlite3.connect('library.db')
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("SELECT title, author, series FROM catalog")
+    rows = cur.fetchall()
+    conn.close()
+
+    authors = [r['author'] for r in rows]
+    matches = fuzzy_search(query, authors)[:limit]
+
+    results = []
+    seen_titles=set()
+    for author, score in matches:
+        matching_rows = [r for r in rows if r['author'] == author]
+        for row in matching_rows:
+            if row['title'] not in seen_titles:
+                results.append({
+                    'title':  row['title'],
+                    'author': row['author'],
+                    'series': row['series'] or '',
+                    'score':  score
+                })
+            seen_titles.add(row['title'])
+    return results
+
+def search_series(query, limit=5):
+    conn = sqlite3.connect('library.db')
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("SELECT title, author, series FROM catalog")
+    rows = cur.fetchall()
+    conn.close()
+
+    series = [r['series'] for r in rows]
+    matches = fuzzy_search(query, series)[:limit]
+    results = []
+    seen_titles = set()
+    for serie, score in matches:
+        matching_rows = [r for r in rows if r['series'] == serie]
+        for row in matching_rows:
+            if row['title'] not in seen_titles:
+                results.append({
+                    'title':  row['title'],
+                    'author': row['author'],
+                    'series': row['series'] or '',
+                    'score':  score
+                })
+                seen_titles.add(row['title'])
     return results
